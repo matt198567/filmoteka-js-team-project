@@ -1,8 +1,41 @@
 .footer {
   background-color: var(--footer-bg-color);
+  padding-top: 30px;
 }
 
-.footer-logo {
+.footer-wraper {
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: $pre-tablet) {
+    justify-content: center;
+  }
+}
+.logo-wrap-svg {
+  display: flex;
+  align-items: center;
+
+  animation: animate-svg 1500ms infinite 1500ms;
+}
+.footer-logo-svg {
+  fill: var(--footer-text-color);
+  margin-right: 10px;
+
+  transform: rotateX(0deg);
+  @keyframes animate-svg {
+    0% {
+      transform: rotateX(0deg);
+    }
+    50% {
+      transform: trotateX(90deg);
+    }
+    100% {
+      transform: rotateX(180deg);
+    }
+  }
+}
+
+.footer-text-link {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -11,35 +44,23 @@
 
   text-decoration: none;
   color: var(--footer-text-color);
+  position: relative;
 
-  display: block;
-
-  @media screen and (max-width: $tablet) {
-    padding-left: 0;
-    text-align: center;
-    padding-top: 20px;
-  }
-
-  @media screen and (min-width: $tablet) {
-    padding-left: 50px;
-    padding-top: 30px;
-  }
-
-  @media screen and (min-width: $desktop) {
-    padding-left: 10px;
-    padding-top: 30px;
+  &:hover::before {
+    width: 100%;
   }
 }
 
-.footer-logo::before {
+.footer-text-link::before {
   content: '';
-  background-color: var(--footer-text-color);
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-  background-image: url(../images/svg/film.svg);
-  background-size: contain;
+  background: var(--footer-text-color);
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.3s ease-in-out;
 }
 
 .footer-wrap {
